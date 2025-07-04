@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLEYDER - Edebiyat Derneği</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #f8f5f2;
+            color: #333;
+            line-height: 1.6;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        header {
+            background-color: #3a4a58;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(77, 103, 128, 0.8) 0%, rgba(58, 74, 88, 0.9) 100%);
+            z-index: 0;
+        }
+        
+        header h1, header p {
+            position: relative;
+            z-index: 1;
+        }
+        
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        
+        nav {
+            background-color: #4a5c6b;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #e0c3a0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #e0c3a0;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-bottom: 3rem;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3a4a58, #e0c3a0);
+        }
+        
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #3a4a58;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .content-section {
+            margin-bottom: 5rem;
+        }
+        
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #3a4a58;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: #e0c3a0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.1);
+        }
+        
+        .card-img {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%);
+            z-index: 1;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+        
+        .card-content {
+            padding: 2rem;
+        }
+        
+        .card-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #3a4a58;
+        }
+        
+        .card-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3a4a58;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #3a4a58;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: #3a4a58;
+        }
+        
+        footer {
+            background-color: #3a4a58;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        footer p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>OLEYDER</h1>
+        <p>Edebiyat Derneği</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="#siirler">Şiirler</a></li>
+            <li><a href="#yazartahlilleri">Yazar Tahlilleri</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section class="hero">
+            <h2>Edebiyatın Kalbi Burada Atıyor</h2>
+            <p>
+                OLEY Derneği (Ortaokul ve Lise Edebiyatı Yaşatma Derneği) öğrencilere edebiyatı sevdirmeyi amaçlayan, öğrencilerin yazınsal yeteneklerini geliştirebilecekleri ve eselerlerini paylaşabilekleri bir kulüptür.
+            </p>
+        </section>
+        
+        <section id="siirler" class="content-section">
+            <h2>Öne Çıkan Şiirler</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="mutluluk.png" alt="Mutluluk Şiiri">
+                    </div>
+                    <div class="card-content">
+                        <h3>Mutluluk</h3>
+                        <p>İnsan bazen sadece gülümsemektir, bazen bir kuş sesi, bazen bir bulut...</p>
+                        <a href="mutluluksiir.html" class="btn">Şiiri Oku</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="deniz.png" alt="Deniz">
+                    </div>
+                    <div class="card-content">
+                        <h3>Denizin Son Nefesi</h3>
+                        <p>Mavi sonsuzluğa bir yolculuk, dalgaların arasında kaybolmak...</p>
+                        <a href="deniz.html" class="btn">Şiiri Oku</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="aile.png" alt="Ailem Şiiri">
+                    </div>
+                    <div class="card-content">
+                        <h3>Ailem</h3>
+                        <p> Ailem,
+                            Sessizliğimdeki fısıltıyı duyardınız her zaman</p>
+                        <a href="aile.html" class="btn">Şiiri Oku</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="yazartahlilleri" class="content-section">
+            <h2>Yazar Tahlillerimiz</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="sabahattin.jpg" alt="Sabahattin Ali">
+                    </div>
+                    <div class="card-content">
+                        <h3>2023: Sabahattin Ali</h3>
+                        <p>  Sabahattin Ali, Türk edebiyatının en önemli figürlerinden biri olarak, toplumcu gerçekçi bakış açısıyla yazdığı eserlerle yalnızca kendi dönemini değil...</p>
+                        <a href="SabahattinAli.html" class="btn">Yazıyı Oku</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="necip.jpg" alt="Necip Fazıl Kısakürek">
+                    </div>
+                    <div class="card-content">
+                        <h3>2024: Necip Fazıl Kısakürek</h3>
+                        <p>Ahmet Necip Fazıl Kısakürek, 26 Mayıs 1904’te İstanbul’un tarih kokan sokaklarında, Maraş kökenli bir ailenin evladı olarak dünyaya geldi...</p>
+                        <a href="NecipFazilKisakurek.html" class="btn">Yazıyı Oku</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="fazil.jpg" alt="Fazıl Hüsnü Dağlarca">
+                    </div>
+                    <div class="card-content">
+                        <h3>2025 : Fazıl Hüsnü Dağlarca</h3>
+                        <p>Türk edebiyatının en üretken ve özgün seslerinden biri olan Fazıl Hüsnü Dağlarca, 26 Ağustos 1914’te İstanbul’un kalbinde doğdu...</p>
+                        <a href="fazilhusnudaglarca.html" class="btn">Yazıyı Oku</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>© 2025 OLEYDER Edebiyat Derneği. Tüm Hakları Saklıdır.</p>
+    </footer>
+</body>
+</html> 

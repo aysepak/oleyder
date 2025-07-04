@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denizin Son Nefesi- OLEYDER Edebiyat Derneği</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #f8f5f2;
+            color: #333;
+            line-height: 1.6;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        header {
+            background-color: #3a4a58;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(77, 103, 128, 0.8) 0%, rgba(58, 74, 88, 0.9) 100%);
+            z-index: 0;
+        }
+        
+        header h1, header p {
+            position: relative;
+            z-index: 1;
+        }
+        
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        
+        nav {
+            background-color: #4a5c6b;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #e0c3a0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #e0c3a0;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .poem-container {
+            background-color: white;
+            padding: 4rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .poem-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(to bottom, #3a4a58, #e0c3a0);
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+        
+        .poem-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .poem-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1.5rem;
+            left: 50%;
+            width: 80px;
+            height: 2px;
+            background-color: #e0c3a0;
+            transform: translateX(-50%);
+        }
+        
+        .poem-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: #3a4a58;
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .poem-header p {
+            color: #666;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .poem-image {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+        
+        .poem-image img {
+            max-width: 100%;
+            height: auto;
+            vertical-align: middle;
+            transition: transform 0.8s ease;
+        }
+        
+        .poem-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .poem-content {
+            white-space: pre-line;
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 3rem;
+            color: #444;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+        
+        .poem-author {
+            text-align: right;
+            font-style: italic;
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .poem-date {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .poem-footer {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+            line-height: 1.7;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3a4a58;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #3a4a58;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: #3a4a58;
+        }
+        
+        footer {
+            background-color: #3a4a58;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        footer p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .poem-container {
+                padding: 2rem;
+            }
+            
+            .poem-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .poem-content {
+                font-size: 1.1rem;
+                line-height: 1.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>OLEYDER</h1>
+        <p>Edebiyat Derneği</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="index.html#siirler">Şiirler</a></li>
+            <li><a href="index.html#yazartahlilleri">Yazar Tahlilleri</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="poem-container">
+            <div class="poem-header">
+                <h2>Denizin Son Nefesi</h2>
+                <p>Gerçeklerin acı sesi</p>
+            </div>
+            
+            <div class="poem-image">
+                <img src="deniz.png" alt="Deniz">
+            </div>
+            
+            <div class="poem-content">
+                Eskiden ayna derdim denize,
+                Masmavi, gökyüzü bakardı içinden.
+                Şimdi baksam, yüzüm görünmüyor,
+                Çöplerden, pislikten bir perde inmiş.
+                
+                Poşetler denizanası olmuş, süzülüyor,
+                Balıklar ters dönmüş, karınları beyaz.
+                Mercanlar vardı hani rengarenk,
+                Şimdi hepsi bembeyaz birer iskelet.
+                
+                Dalgalar kızgın, dövüyor sahili,
+                Sanki "yeter!" diye haykırıyor.
+                Köpük değil bu, denizin tükürüğü,
+                Yüzümüze çarpıyor bütün hatalarımızı.
+                
+                O dev gemiler geçiyor ya ufuktan,
+                Arkalarında koca bir yara bırakıyorlar,
+                Kusmuk gibi zehirlerini saça saça.
+                Bir yunus görsem, ağlayacak gibi oluyorum.
+                
+                Sahilde bir kaplumbağa, yorgun,
+                Evi sırtında değil, bir pet şişenin içinde.
+                Martılar uçamıyor, kanatları katran,
+                Gökyüzünden yeryüzüne düşen bir leke gibi.
+                
+                Artık kumdan kaleler yapmıyor çocuklar,
+                Elleri kirleniyor, kum bile küsmüş.
+                Dalgalar ninni söylemiyor artık,
+                Kayıp bir mavinin ağıdını yakıyor.
+                
+                Bu deniz artık ayna falan değil,
+                Sadece içimizdeki karanlığı gösteriyor.
+                Baktıkça utanıyorum kendimden,
+                Attığımız her adımın izi var bu suda.
+                
+                Ama bir ses diyor ki içimden, "belki..."
+                Belki son balık ölmeden,
+                Son martı düşmeden,
+                Bir şeyler yaparız, birimiz, hepimiz.
+                
+                O ayna yeniden parlar mı dersin?
+                Çocuklar yine güler mi kıyısında?
+                Son bir şansımız var mı, ne dersin?
+                Deniz son nefesini vermeden...
+            </div>
+            
+            <div class="poem-author">
+                <p>Güney M*** -10.Sınıf</p>
+            </div>
+            
+            <div class="poem-date">
+                <p>15 Mayıs 2024</p>
+            </div>
+            
+            <div class="poem-footer">
+                <p>Bu şiir, OLEYDER Edebiyat Derneği'nin düzenlediği "Doğa" (2024) temalı şiir yarışmasında birincilik ödülü almıştır.</p>
+            </div>
+            
+            <div class="navigation-buttons">
+                <a href="index.html#siirler" class="btn">Diğer Şiirlere Dön</a>
+        
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 OLEYDER Edebiyat Derneği. Tüm Hakları Saklıdır.</p>
+    </footer>
+</body>
+</html> 

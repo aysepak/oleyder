@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda - OLEYDER Edebiyat Derneği</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #f8f5f2;
+            color: #333;
+            line-height: 1.6;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        header {
+            background-color: #3a4a58;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(77, 103, 128, 0.8) 0%, rgba(58, 74, 88, 0.9) 100%);
+            z-index: 0;
+        }
+        
+        header h1, header p {
+            position: relative;
+            z-index: 1;
+        }
+        
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        
+        nav {
+            background-color: #4a5c6b;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #e0c3a0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #e0c3a0;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #3a4a58;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #e0c3a0;
+        }
+        
+        .section h3 {
+            font-family: 'Playfair Display', serif;
+            color: #3a4a58;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .section h3::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #e0c3a0;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .section p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .section p strong {
+            color: #3a4a58;
+            font-weight: 600;
+        }
+        
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-8px);
+        }
+        
+        .team-member img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid #e0c3a0;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .team-member:hover img {
+            border-color: #3a4a58;
+            transform: scale(1.05);
+        }
+        
+        .team-member h4 {
+            color: #3a4a58;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .team-member p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        footer {
+            background-color: #3a4a58;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        footer p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .section {
+                padding: 2rem;
+            }
+            
+            .page-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .team {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>OLEYDER</h1>
+        <p>Edebiyat Derneği</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="index.html#siirler">Şiirler</a></li>
+            <li><a href="index.html#yazartahlilleri">Yazar Tahlilleri</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="page-header">
+            <h2>Hakkımızda</h2>
+            <p>Ortaokul ve Lise Edebiyatı Yaşatma Derneği'nin hikayesi, değerleri ve vizyonu</p>
+        </div>
+        
+        <section class="section">
+            <h3>Tarihçemiz</h3>
+            <p>
+                2017 yılında bir lisede birkaç öğrenci ve birkaç öğretmen tarafından kurulduk.
+                Kurulduğumuz lisede ve civar liselerde çeşitli edebiyat buluşmalarını, yarışmalarını organize ettik.
+                18 yaşından küçük bireylerin internette paylaşılmasına karşı olduğumuz için yıllarca öğrencilerin eserlerini sosyal mecralarda paylaşmaktan kaçındık.
+                Fakat bu yıl oleyder.com.tr adresi üzerinden öğrencilerin isimlerini sansürleyerek eserlerini ve edebiyat çalışmalarımızı paylaşmayı denemeye karar verdik.
+                (Denemek için eserlerimizin yalnızca çok küçük bir kısmını paylaştık.)
+            </p>
+        </section>
+        
+        <section class="section">
+            <h3>Misyon ve Vizyonumuz</h3>
+            <p>
+                Hedefimiz ekran süresi gitgide artan ve edebiyattan uzaklaşan gençliğin edebiyat sevgisini canlı tutmak. 
+                Onlara şiirlerini paylaşabilecekleri, buluşabilecekleri bir ortam sunarak edebi yönlerini ortaya çıkarmalarına yardımcı olmak.
+                Bu doğrultuda gerek yüz yüze yaptığımız yarışmaları gerekse internet üzerinden tüm Türkiye'ye açık olarak düzenlediğimiz yarışmaları arttırmak.
+            </p>
+        </section>
+        
+        <section class="section">
+            <h3>Yönetim Kurulumuz</h3>
+            <p>OLEYDER Edebiyat Derneği, öğretmenlerimiz tarafından yönetilmektedir.</p>
+            <div class="team">
+                <div class="team-member">
+                    <img src="ada.png" alt="Ahmet Öztürk">
+                    <h4>Ahmet Öztürk</h4>
+                    <p>Edebiyat öğretmeni</p>
+                </div>
+                <div class="team-member">
+                    <img src="ada.png" alt="Ayşe Pak">
+                    <h4>Ayşe Pak</h4>
+                    <p>Edebiyat öğretmeni</p>
+                </div>
+                <div class="team-member">
+                    <img src="ada.png" alt="Musa Kaya">
+                    <h4>Musa Kaya</h4>
+                    <p>Türkçe öğretmeni</p>
+                </div>
+                <div class="team-member">
+                    <img src="ada.png" alt="Elif Bingöllü">
+                    <h4>Elif Bingöllü</h4>
+                    <p>Edebiyat öğretmeni</p>
+                </div>
+                
+               
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>© 2025 OLEYDER Edebiyat Derneği. Tüm Hakları Saklıdır.</p>
+    </footer>
+</body>
+</html> 
